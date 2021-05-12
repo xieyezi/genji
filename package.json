@@ -15,5 +15,38 @@
   "bugs": {
     "url": "https://github.com/xieyezi/juefei/issues"
   },
-  "homepage": "https://github.com/xieyezi/juefei#readme"
+  "homepage": "https://github.com/xieyezi/juefei#readme",
+  "dependencies": {
+    "@vue/reactivity": "^3.0.11"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4",
+    "commitizen": "^4.0.3",
+    "cz-customizable": "^6.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.3.6",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "cz-customizable": {
+    "config": ".cz-config.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "npm run format",
+      "git add"
+    ]
+  }
 }

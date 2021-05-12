@@ -1,0 +1,19 @@
+{
+  "name": "juefei",
+  "version": "1.0.0",
+  "description": "a state management framewok bye vue3 reactivity ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xieyezi/juefei.git"
+  },
+  "author": "xieyezi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xieyezi/juefei/issues"
+  },
+  "homepage": "https://github.com/xieyezi/juefei#readme"
+}

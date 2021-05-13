@@ -13,6 +13,11 @@ It's inspired by Overwatch.
 Genji flings precise and deadly Shuriken at his targets, and uses his technologically-advanced katana to deflect projectiles or deliver a Swift Strike that cuts down enemies.
 >>>
 
+>>>
+So genji is fast, agile and accurate!
+>>>
+
+
 ```
 npm install genji
 ```

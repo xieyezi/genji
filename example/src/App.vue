@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 import { useUserInfo } from './store/userinfo'
 
@@ -15,9 +15,17 @@ export default defineComponent({
 	},
 	setup() {
 		const { info, getUserInfo } = useUserInfo((store) => ({
-			polls: store.polls,
-			getPolls: store.getPolls
+			info: store.info,
+			getUserInfo: store.getUserInfo
 		}))
+
+		onMounted(() => {
+			getUserInfo()
+		})
+
+		return {
+			info
+		}
 	}
 })
 </script>

@@ -7,7 +7,11 @@
 
 genji is A small vue state management framewok by vue3 reactivity.
 
-
+### Why calls genji ?
+It's inspired by Overwatch.
+>>>
+Genji flings precise and deadly Shuriken at his targets, and uses his technologically-advanced katana to deflect projectiles or deliver a Swift Strike that cuts down enemies.
+>>>
 
 ```
 npm install genji

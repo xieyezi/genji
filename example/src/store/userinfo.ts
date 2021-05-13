@@ -1,4 +1,5 @@
-import create, { State } from 'genji'
+import { create } from '../../../src/index'
+import { State } from '../../../src/type'
 
 interface userState extends State {
 	info: {

@@ -1,38 +1,15 @@
-// import { effect, reactive } from '@vue/reactivity'
+// import { create } from './create'
 
-// type EffectFn = () => any
+import { GetState, SetState, State, StoreApi } from './type'
 
-// type EffectList = Array<EffectFn>
+export type StateCreator<T extends State, CustomSetState = SetState<T>> = (
+	set: CustomSetState,
+	get: GetState<T>,
+	api: StoreApi<T>
+) => T
 
-// let state = reactive({
-// 	count: 0
-// })
-
-// const effectList: EffectList = []
-
-// const listener1 = () => {
-// 	console.log(state.count)
-// }
-
-// const listener2 = () => {
-// 	console.log(state.count * 2)
-// }
-
-// const listener3 = () => {
-// 	console.log(state.count * 3)
-// }
-
-// effectList.push(listener1)
-// effectList.push(listener2)
-// effectList.push(listener3)
-
-// effect(() => {
-// 	for (const effect of effectList) effect()
-// })
-
-// state.count++
-// state.count++
-
-import { create } from './create'
-
-export { create }
+export function create<TState extends State>(
+	createState: StateCreator<TState> | StoreApi<TState>
+) {
+	console.log(createState)
+}

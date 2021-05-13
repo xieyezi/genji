@@ -1,1 +1,1 @@
-a state management fromework by vue3 reactivity
+a react state management framewok by vue3 reactivity api

@@ -11,7 +11,7 @@ npm install genji
 Your store is a hook base on compostion-api! You can put anything in it: primitives, objects, functions. The set function merges state.
 
 ```ts
-import create, { State } from 'genji'
+import create from 'genji'
 
 const useUserInfo = create((set, get) => ({
     count: 0,

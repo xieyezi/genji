@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img width="500" src="genji.png" />
+  <img width="500" height="467" src="genji.png" />
 </p>
 
 

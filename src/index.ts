@@ -33,12 +33,9 @@
 // state.count++
 // state.count++
 
-import { effect, reactive, readonly } from '@vue/reactivity'
-import { useRef, useMemo, useEffect } from 'react'
 import { createStore } from './create'
-import { useForceUpdate } from './util'
 
-export function useStore(initState: Object) {
-	const state = createStore(initState)
+export function create(init: Object) {
+	const state = create(createStore)
 	return state
 }

@@ -1,4 +1,11 @@
-a vue state management framewok by vue3 reactivity api
+
+<p align="center">
+  <img width="500" src="genji.png" />
+</p>
+
+
+
+gengji is A small vue state management framewok by vue3 reactivity.
 
 
 

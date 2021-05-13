@@ -12,7 +12,7 @@ Your store is a hook base on compostion-api! You can put anything in it: primiti
 
 ```ts
 const useUserInfo = create((set, get) => ({
-	count: 0,
+    count: 0,
     increase: () => set(state => ({ count: state.count + 1 })),
     resetCount: () => set({ count: 0 })
 }))
@@ -23,8 +23,8 @@ const useUserInfo = create((set, get) => ({
 Use the hook anywhere, no providers needed. Select your state and the component will re-render on changes.
 
 ```ts
-const { info, getUserInfo } = useUserInfo((store) => ({
+const { info, increase } = useUserInfo((store) => ({
     info: store.info,
-    getUserInfo: store.getUserInfo
+    increase: store.increase
 }))
 ```

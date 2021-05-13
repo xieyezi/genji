@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .js,.ts",
     "lint-fix": "eslint . --fix --ext .js,.ts",
-    "format": "prettier --write \"src/**/*.ts\" \"example/**/*.ts\" \"example/**/*.tsx\"",
+    "format": "prettier --write \"src/**/*.ts\" \"example/**/*.ts\" \"example/**/*.vue\"",
     "commit": "git-cz",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,12 +1,10 @@
-import { effect, reactive, readonly } from '@vue/reactivity'
-import { useRef, useMemo, useEffect } from 'react'
+import { reactive } from '@vue/reactivity'
 import { useCheckIsObj } from './util'
 
-export function createStore(initState: Object) {
+export function create(initState: Object) {
 	const isEmptyObj = useCheckIsObj(initState)
 	if (!isEmptyObj) {
-		const stateRef = useRef(initState)
-		const state = useMemo(() => reactive(stateRef.current), [stateRef.current])
+		const state = reactive(initState)
 		return state
 	} else {
 		throw console.warn('initState must be obj')

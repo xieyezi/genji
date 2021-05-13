@@ -33,9 +33,6 @@
 // state.count++
 // state.count++
 
-import { createStore } from './create'
+import { create } from './create'
 
-export function create(init: Object) {
-	const state = create(createStore)
-	return state
-}
+export { create }

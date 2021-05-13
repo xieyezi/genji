@@ -1,11 +1,11 @@
 
 <p align="center">
-  <img width="360" height="360" src="genji.png" />
+  <img width="320" height="320" src="genji.png" />
 </p>
 
 
 
-gengji is A small vue state management framewok by vue3 reactivity.
+genji is A small vue state management framewok by vue3 reactivity.
 
 
 

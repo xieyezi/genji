@@ -1,5 +1,3 @@
-// import { create } from './create'
-
 import createImpl, {
 	GetState,
 	SetState,
@@ -25,14 +23,35 @@ export interface UseStore<T extends State> {
 export function create<TState extends State>(
 	createState: StateCreator<TState> | StoreApi<TState>
 ): UseStore<TState> {
-	console.log(createState)
 	const storeApi: StoreApi<TState> =
 		typeof createState === 'function' ? createImpl(createState) : createState
-	console.log(storeApi)
-
+	console.log('storeApi', storeApi)
 	const useStore: any = <StateSlice>(
 		selector: StateSelector<TState, StateSlice> = storeApi.getState as any
-	) => {}
-
+	) => {
+		const state = storeApi.getState()
+		Object.assign(useStore, storeApi)
+		return selector(state)
+	}
 	return useStore
 }
+
+interface userState extends State {
+	count: number
+	increase: () => void
+	removeAll: () => void
+}
+const useStore = create<userState>((set, get) => ({
+	count: 0,
+	increase: () => set((state) => ({ count: state.count + 1 })),
+	removeAll: () => set({ count: 0 })
+}))
+
+const { count, increase, removeAll } = useStore()
+console.log('useStore', useStore)
+
+console.log('count', count)
+console.log('increase', increase)
+console.log('removeAll', removeAll)
+increase()
+console.log('count', count)

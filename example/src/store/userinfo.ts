@@ -1,5 +1,5 @@
 import { create } from '../../../src/index'
-import { State } from '../../../src/type'
+import { State } from '../../../src/create'
 
 interface userState extends State {
 	info: {
@@ -14,7 +14,11 @@ interface userState extends State {
 }
 
 export const useUserInfo = create<userState>((set, get) => ({
-	info: {},
+	info: {
+		name: '',
+		age: 0,
+		sex: ''
+	},
 	getUserInfo: async () => {
 		let res = await fetch('xxxxxx')
 		set({

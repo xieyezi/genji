@@ -2,9 +2,9 @@
 	<img alt="Vue logo" src="./assets/logo.png" />
 	<img alt="Genji logo" width="210" height="210" src="./assets/genji.png" />
 	<div id="nav">
-			<router-link to="/">Home Page</router-link>
-			<span>|</span>
-			<router-link to="/user">User Page</router-link>
+		<router-link to="/">Home Page</router-link>
+		<span>|</span>
+		<router-link to="/user">User Page</router-link>
 	</div>
 	<router-view />
 </template>

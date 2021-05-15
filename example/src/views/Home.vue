@@ -1,6 +1,7 @@
 <template>
 	<h1>{{ msg }}</h1>
 	<p>count is: {{ count }}</p>
+	<p>count is: {{ countDouble }}</p>
 	<p>name is: {{ userInfo.name }}</p>
 	<div>
 		<button @click="increase">++</button>
@@ -8,6 +9,7 @@
 </template>
 
 <script lang="ts">
+import { computed, unref } from '@vue/reactivity'
 import { defineComponent, onMounted } from 'vue'
 import useStore from '../store/userinfo'
 
@@ -20,22 +22,18 @@ export default defineComponent({
 		}
 	},
 	setup() {
-		const [
-			count,
-			userInfo,
-			increase,
-			getUserInfo,
-			setUserInfo,
-			submit
-		] = useStore(state => [
-			state.count,
+		const [userInfo, getUserInfo] = useStore(state => [
 			state.userInfo,
-			state.increase,
 			state.getUserInfo,
-			state.setUserInfo,
-			state.submit
 		])
 
+		const { count, increase } = useStore(state => ({
+			count: state.count,
+			increase: state.increase
+		}))
+	
+		const countDouble = useStore(state =>  computed(()=>unref( state.count) * 2))
+		
 		onMounted(() => {
 			getUserInfo()
 		})
@@ -43,7 +41,8 @@ export default defineComponent({
 		return {
 			count,
 			increase,
-			userInfo
+			userInfo,
+			countDouble
 		}
 	}
 })

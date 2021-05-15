@@ -108,7 +108,7 @@ It is generally recommended to memoize selectors with `computed`.
 
 
 ```ts
-const countDouble = useStore(state =>  computed(()=>unref( state.count) * 2))
+const countDouble = useStore(state =>computed(()=>unref( state.count) * 2))
 ```
 
 If a selector doesn't depend on components to reactivity, you can define it outside the components. But when you to use value of pick from the state, you need to be wrapped with `unref` too.

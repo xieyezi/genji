@@ -144,7 +144,7 @@ const useStore = create((set, get) => ({
 	userInfo: {},
 	getUserInfo: async () => {
 	  const res = await fetch(pond)
-    set({ userInfo: res })
+          set({ userInfo: res })
 	}
 }))
 ```

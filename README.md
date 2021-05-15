@@ -38,7 +38,7 @@ const useStore = create((set, get) => ({
 
 Use the hook in your components, Select your state and the component will re-render on changes.
 
-```ts
+```vue
 <template>
 	<p>count is: {{ count }}</p>
 	<button @click="increase">count++</button>

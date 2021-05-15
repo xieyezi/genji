@@ -1,5 +1,11 @@
 export function useCheckFn(value: any) {
-	return Object.prototype.toString.call(value) === '[object Function]'
-		? true
-		: false
+	let isFn = false
+	if (
+		Object.prototype.toString.call(value) === '[object Function]' ||
+		Object.prototype.toString.call(value) === '[object AsyncFunction]'
+	) {
+		isFn = true
+	}
+
+	return isFn
 }

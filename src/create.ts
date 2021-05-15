@@ -6,8 +6,6 @@ export type State = object
 
 export type StateSelector<T extends State, U> = (state: T) => U
 
-export type EqualityChecker<T> = (state: T, newState: T) => boolean
-
 export type PartialState<T extends State, K extends keyof T = keyof T> =
 	| (Pick<T, K> | T)
 	| ((state: T) => Pick<T, K> | T)
@@ -34,44 +32,41 @@ export default function create<TState extends State>(
 ): StoreApi<TState> {
 	let state: TState
 
-	const setState: SetState<TState> = (partial, replace) => {
-		const nextState =
-			typeof partial === 'function'
-				? (partial as (state: TState) => TState)(state)
-				: partial
-		if (nextState !== state) {
-			// const previousState = state
-			state = replace
-				? (nextState as TState)
-				: Object.assign({}, state, nextState)
-		}
-	}
+	const setState: SetState<TState> = partial => {
+		const stateWithOutReactive = getStateWithOutReactive()
 
-	// const getState: GetState<TState> = () => {
-	// 	let stateWithOutReactivity: TState = Object.create(state)
-	// 	console.log('state', state)
-	// 	Object.keys(stateWithOutReactivity).forEach((key) => {
-	// 		if (useCheckFn(stateWithOutReactivity[key]))
-	// 			stateWithOutReactivity[key] = state[key]
-	// 		else stateWithOutReactivity[key] = stateWithOutReactivity[key].value
-	// 	})
-	// 	console.log('stateWithOutReactivity', stateWithOutReactivity)
-	// 	console.log('state', stateWithOutReactivity)
-	// 	return stateWithOutReactivity
-	// }
+		const nextState = useCheckFn(partial)
+			? (partial as (state: TState) => TState)(stateWithOutReactive)
+			: partial
+		const targetKey = Object.keys(nextState)[0]
+		if (Object.keys(state).includes(targetKey))
+			state[targetKey].value = nextState[Object.keys(nextState)[0]]
+	}
 
 	const getState: GetState<TState> = () => state
 
 	const api = { setState, getState }
 
 	const warpStateWithReactive = (stateWithOutReactivity: TState) => {
-		Object.keys(stateWithOutReactivity).forEach((key) => {
+		Object.keys(stateWithOutReactivity).forEach(key => {
 			if (!useCheckFn(stateWithOutReactivity[key]))
 				stateWithOutReactivity[key] = ref(stateWithOutReactivity[key])
 		})
 		return stateWithOutReactivity
 	}
 
-	state = warpStateWithReactive(createState(setState, getState, api))
+	const getStateWithOutReactive: GetState<TState> = () => {
+		let stateWithOutReactivity = Object.create(state)
+
+		Object.keys(state).forEach(key => {
+			if (useCheckFn(state[key])) stateWithOutReactivity[key] = state[key]
+			else stateWithOutReactivity[key] = state[key].value
+		})
+		return stateWithOutReactivity
+	}
+
+	state = warpStateWithReactive(
+		createState(setState, getStateWithOutReactive, api)
+	)
 	return api
 }

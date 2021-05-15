@@ -2,40 +2,28 @@ import { create } from '../../../src/index'
 import { State } from '../../../src/create'
 
 interface userState extends State {
-	info: {
-		name: string
-		age: number
-		sex: string
-	}
+	count: number
+	userInfo: object
+	increase: () => void
 	getUserInfo: () => Promise<void>
-	setUserAge: (age: number) => void
-	setUserName: (name: number) => void
-	subMitUserInfo: () => Promise<void>
+	setUserInfo: (newInfo: object) => void
+	submit: () => Promise<void>
 }
-
-export const useUserInfo = create<userState>((set, get) => ({
-	info: {
-		name: '',
-		age: 0,
-		sex: ''
-	},
+const useStore = create<userState>((set, get) => ({
+	count: 0,
+	userInfo: {},
+	increase: () => set(state => ({ count: state.count + 1 })),
 	getUserInfo: async () => {
-		let res = await fetch('xxxxxx')
-		set({
-			info: res
-		})
+		const res = await fetch('http://xieyezi.com:9003/mock/19/daily/genji')
+		const json = await res.json()
+		const { setUserInfo } = get()
+		setUserInfo(json)
 	},
-	setUserAge: (age) => {
-		let info = get().info
-		info = { ...info, age }
-		set({ info: info })
+	setUserInfo: (newInfo: object) => {
+		set({ userInfo: newInfo })
 	},
-	setUserName: (name) => {
-		let info = get().info
-		info = { ...info, name }
-		set({ info: info })
-	},
-	subMitUserInfo: async () => {
+
+	submit: async () => {
 		await fetch('xxxxxx', {
 			method: 'POST',
 			credentials: 'include',
@@ -48,3 +36,5 @@ export const useUserInfo = create<userState>((set, get) => ({
 		get().getUserInfo()
 	}
 }))
+
+export default useStore

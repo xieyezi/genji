@@ -4,6 +4,7 @@
 </p>
 
 
+<code>![visitors](https://visitor-badge.glitch.me/badge?page_id=xieyezi.genji)</code>
 
 genji is A small vue state management framewok by vue3 reactivity.
 

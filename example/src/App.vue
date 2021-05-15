@@ -1,55 +1,24 @@
 <template>
-	<!-- <img alt="Vue logo" src="./assets/logo.png" />
-	<HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
 	<img alt="Vue logo" src="./assets/logo.png" />
-	<p>count is: {{ count }}</p>
-	<p>name is: {{ userInfo.name }}</p>
-	<div>
-		<button @click="increase">++</button>
+	<img alt="Genji logo" width="210" height="210" src="./assets/genji.png" />
+	<div id="nav">
+			<router-link to="/">Home Page</router-link>
+			<span>|</span>
+			<router-link to="/user">User Page</router-link>
 	</div>
+	<router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
-import useStore from './store/userinfo'
 
 export default defineComponent({
 	name: 'App',
 	components: {
 		HelloWorld
 	},
-	setup() {
-		const [
-			count,
-			userInfo,
-			increase,
-			getUserInfo,
-			setUserInfo,
-			submit
-		] = useStore(state => [
-			state.count,
-			state.userInfo,
-			state.increase,
-			state.getUserInfo,
-			state.setUserInfo,
-			state.submit
-		])
-
-		onMounted(() => {
-			getUserInfo()
-		})
-
-		const changeName = e => {
-			// toggleName(e.target.value)
-		}
-
-		return {
-			count,
-			increase,
-			userInfo
-		}
-	}
+	setup() {}
 })
 </script>
 
@@ -62,4 +31,20 @@ export default defineComponent({
 	color: #2c3e50;
 	margin-top: 60px;
 }
+/* #nav {
+	padding-top: 60px;
+	padding-bottom: 20px;
+	span {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	a {
+		font-size: 20px;
+		font-weight: bold;
+		color: #2c3e50;
+		&.router-link-exact-active {
+			color: white;
+		}
+	}
+} */
 </style>

@@ -2,6 +2,7 @@
 	<h1>{{ msg }}</h1>
 	<p>count is: {{ count }}</p>
 	<p>name is: {{ userInfo.name }}</p>
+	<p>age is: {{ userInfo.age }}</p>
 	<div>
 		<button @click="increase">++</button>
 	</div>
@@ -20,25 +21,11 @@ export default defineComponent({
 		}
 	},
 	setup() {
-		const [
-			count,
-			userInfo,
-			increase,
-			getUserInfo,
-			setUserInfo,
-			submit
-		] = useStore(state => [
+		const [count, userInfo, increase] = useStore(state => [
 			state.count,
 			state.userInfo,
-			state.increase,
-			state.getUserInfo,
-			state.setUserInfo,
-			state.submit
+			state.increase
 		])
-
-		onMounted(() => {
-			getUserInfo()
-		})
 
 		return {
 			count,

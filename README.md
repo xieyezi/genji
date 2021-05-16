@@ -80,14 +80,6 @@ If you want pick it lick by Array,  like `react hooks`:
 const [count, genji] = useStore(state => [state.count, state.genji])
 ```
 
-
-Even you can pick it by Mapped:
-
-```ts
-// Mapped picks, re-renders the component when state.heros change
-const heros = useStore(state => Object.keys(state.heros))
-```
-
 All pick is so random and simple! It's all up to you.
 
 ### Fetching from multiple stores

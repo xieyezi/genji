@@ -41,13 +41,13 @@ Use the hook in your components, Select your state and the component will re-ren
 
 ```ts
 <template>
-	<p>count is: {{ count }}</p>
-	<button @click="increase">count++</button>
+  <p>count is: {{ count }}</p>
+  <button @click="increase">count++</button>
 </template>
 ....
 const { count, increase } = useStore(state => ({
-	count: state.count,
-	increase: state.increase
+   count: state.count,
+   increase: state.increase
 }))
 ```
 
@@ -124,8 +124,8 @@ genji provide `set` function to update  `state`. just like this:
 
 ```ts
 const useStore = create((set, get) => ({
-	count: 0,
-	increase: () => set(state => ({ count: state.count + 1 })),
+  count: 0,
+  increase: () => set(state => ({ count: state.count + 1 })),
 }))
 
 const { count, increase } = useStore(state => ({
@@ -139,11 +139,11 @@ then you can use `increase` function  to change state.
 
 ```ts
 const useStore = create((set, get) => ({
-	userInfo: {},
-	getUserInfo: async () => {
-	  const res = await fetch(pond)
-    set({ userInfo: res })
-	}
+   userInfo: {},
+   getUserInfo: async () => {
+      const res = await fetch(pond)
+      set({ userInfo: res })
+   }
 }))
 ```
 ### Read from state in actions

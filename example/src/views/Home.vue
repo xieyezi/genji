@@ -4,7 +4,7 @@
 	<p>count is: {{ countDouble }}</p>
 	<p>name is: {{ userInfo.name }}</p>
 	<div>
-		<button @click="increase">++</button>
+		<button @click="increase">count++</button>
 	</div>
 </template>
 

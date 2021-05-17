@@ -24,16 +24,18 @@ export default defineComponent({
 	setup() {
 		const [userInfo, getUserInfo] = useStore(state => [
 			state.userInfo,
-			state.getUserInfo,
+			state.getUserInfo
 		])
 
 		const { count, increase } = useStore(state => ({
 			count: state.count,
 			increase: state.increase
 		}))
-	
-		const countDouble = useStore(state =>  computed(()=>unref( state.count) * 2))
-		
+
+		const countDouble = useStore(state =>
+			computed(() => unref(state.count) * 2)
+		)
+
 		onMounted(() => {
 			getUserInfo()
 		})

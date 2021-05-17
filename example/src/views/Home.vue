@@ -31,6 +31,7 @@ export default defineComponent({
 			count: state.count,
 			increase: state.increase
 		}))
+		
 
 		const countDouble = useStore(state =>
 			computed(() => unref(state.count) * 2)

@@ -29,9 +29,9 @@ Your store is a hook base on compostion-api! You can put anything in it: primiti
 import create from 'genji'
 
 const useStore = create((set, get) => ({
-    count: 0,
-    increase: () => set(state => ({ count: state.count + 1 })),
-    resetCount: () => set({ count: 0 })
+  count: 0,
+  increase: () => set(state => ({ count: state.count + 1 })),
+  resetCount: () => set({ count: 0 })
 }))
 ```
 ### Then use your vue components, and that's it!
@@ -39,7 +39,7 @@ const useStore = create((set, get) => ({
 
 Use the hook in your components, Select your state and the component will re-render on changes.
 
-```vue
+```ts
 <template>
 	<p>count is: {{ count }}</p>
 	<button @click="increase">count++</button>
@@ -68,8 +68,8 @@ If you want pick it by Object, like `vuex mapState`:
 ```ts
 // Object pick, re-renders the component when either state.count or state.genji change
 const { count, genji } = useStore((state) => ({
-     state.count,
-     state.genji
+  count: state.count,
+  genji: state.genji
 }))
 ```
 
@@ -129,8 +129,8 @@ const useStore = create((set, get) => ({
 }))
 
 const { count, increase } = useStore(state => ({
-    count: state.count,
-    increase: state.increase
+  count: state.count,
+  increase: state.increase
 }))
 ```
 then you can use `increase` function  to change state.
@@ -142,7 +142,7 @@ const useStore = create((set, get) => ({
 	userInfo: {},
 	getUserInfo: async () => {
 	  const res = await fetch(pond)
-          set({ userInfo: res })
+    set({ userInfo: res })
 	}
 }))
 ```

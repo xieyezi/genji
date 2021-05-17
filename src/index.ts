@@ -2,10 +2,11 @@ import { Ref } from '@vue/reactivity'
 import createImpl, {
 	GetState,
 	SetState,
-	State,
 	StoreApi,
 	StateSelector
 } from './create'
+
+export type State = object
 
 export type StateCreator<T extends State, CustomSetState = SetState<T>> = (
 	set: CustomSetState,
@@ -21,7 +22,7 @@ export interface UseStore<T extends State> {
 	<U>(selector: StateSelector<WrapedWithRef<T>, U>): U
 }
 
-export function create<TState extends State>(
+export default function create<TState extends State>(
 	createState: StateCreator<TState> | StoreApi<TState>
 ): UseStore<TState> {
 	const storeApi: StoreApi<TState> =

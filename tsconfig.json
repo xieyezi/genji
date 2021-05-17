@@ -3,11 +3,14 @@
       "target": "esnext",                                                   
       "outDir": "./dist",                      
       "baseUrl": ".",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "sourceMap": true,                  
+      "moduleResolution": "node",                 
       "esModuleInterop": true,                  
       "allowSyntheticDefaultImports": true,
+      "paths": {
+        "genji": [
+          "./src/index.ts"
+        ]
+      }
     },
     "include": [
         "src/**/*",

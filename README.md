@@ -45,9 +45,9 @@ Use the hook in your components, Select your state and the component will re-ren
 	<button @click="increase">count++</button>
 </template>
 ....
-const { info, increase } = useStore((state) => ({
-    info: state.info,
-    increase: state.increase
+const { count, increase } = useStore(state => ({
+			count: state.count,
+			increase: state.increase
 }))
 ```
 
@@ -104,13 +104,18 @@ It is generally recommended to memoize selectors with `computed`.
 const countDouble = useStore(state =>computed(()=>unref( state.count) * 2))
 ```
 
-If a selector doesn't depend on components to reactivity, you can define it outside the components. But when you to use value of pick from the state, you need to be wrapped with `unref` too.
+If a selector doesn't in components to reactivity, you can define it outside the components. But when you to use value of pick from the state, you need to be wrapped with `unref` too.
 
 ```ts
 const selector = state => state.hero
 const hero = useStore(selector)
 
+// warpped with unref()
 console.log(unref(hero))
+
+// or you can use like this:
+console.log(hero.value)
+
 ```
 
 ### Overwriting state

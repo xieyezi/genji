@@ -46,8 +46,8 @@ Use the hook in your components, Select your state and the component will re-ren
 </template>
 ....
 const { count, increase } = useStore(state => ({
-			count: state.count,
-			increase: state.increase
+	count: state.count,
+	increase: state.increase
 }))
 ```
 

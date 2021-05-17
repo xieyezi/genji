@@ -18,7 +18,7 @@ So genji is fast, agile and accurate!
 
 
 ```
-npm install genji
+npm install xieyezi-genji
 ```
 
 ### Create Store

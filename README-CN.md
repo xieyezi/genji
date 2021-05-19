@@ -116,8 +116,6 @@ const orders = useOrder(state => state.orders)
 const countDouble = useStore(state =>computed(()=>unref( state.count) * 2))
 ```
 
-If a selector doesn't in components to reactivity, you can define it outside the components. But when you to use value of pick from the state, you need to be wrapped with `unref` too.
-
 如果`选择器`不在组件中使用，则也可以在组件外部定义它。但是，当使用来自 `Store` 的选择值时，也需要使用 `unref` 进行包裹，或者你也可以直接利用 `.value` 来使用它。
 
 ```ts

@@ -4,7 +4,7 @@
 </p>
 
 
-Language: 中文简体 | [EN](https://github.com/xieyezi/monia-cli)
+Language: 中文简体 | [EN](https://github.com/xieyezi/genji)
 
 
 <code>![visitors](https://visitor-badge.glitch.me/badge?page_id=xieyezi.genji)</code>

@@ -14,7 +14,7 @@ import { defineComponent, onMounted } from 'vue'
 import useStore from '../store/userinfo'
 
 export default defineComponent({
-	name: 'HelloWorld',
+	name: 'Home',
 	props: {
 		msg: {
 			type: String,

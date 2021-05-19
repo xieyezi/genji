@@ -13,7 +13,7 @@ import { defineComponent, onMounted } from 'vue'
 import useStore from '../store/userinfo'
 
 export default defineComponent({
-	name: 'HelloWorld',
+	name: 'User',
 	props: {
 		msg: {
 			type: String,

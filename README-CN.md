@@ -162,8 +162,6 @@ const useStore = create((set, get) => ({
 ```
 ### 在 `action` 中读取 `Store`
 
-`set` allows fn-updates `set(state => result)`, but you still have access to state outside of it through `get`.
-
 在一个 `action` 执行过程中，如果你想取出 `Store` 的某些值，你可以通过 `get` 钩子来访问`Store`。
 
 ```ts

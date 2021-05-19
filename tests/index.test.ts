@@ -121,7 +121,7 @@ it('change the store by object', () => {
 	expect(count.value).toBe(1)
 })
 
-it('change the store by async function', () => {
+it('change the store by async function', async () => {
 	const useStore = create<UserState>(set => ({
 		name: 'genji',
 		changeName: async () => {
@@ -139,6 +139,25 @@ it('change the store by async function', () => {
 
 	expect(name.value).toBe('genji')
 	expect(changeName).toBeInstanceOf(Function)
-	changeName()
-	// expect(name.value).toBe('juefei')
+	await changeName()
+	expect(name.value).toBe('juefei')
+})
+
+it('read from state in actions', () => {
+	const useStore = create<CounterState>((set, get) => ({
+		count: 0,
+		increase: () => {
+			const { count } = get()
+			expect(count).toBe(0)
+			if (count == 0) set({ count: 1 })
+		}
+	}))
+
+	const count = useStore(state => state.count)
+	const increase = useStore(state => state.increase)
+
+	expect(count.value).toBe(0)
+	expect(increase).toBeInstanceOf(Function)
+	increase()
+	expect(count.value).toBe(1)
 })

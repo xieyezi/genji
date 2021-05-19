@@ -26,7 +26,7 @@ export default defineComponent({
 		 * pick without args
 		 */
 		// const { count, increase } = useStore()
-        
+
 		/**
 		 * pick without Array
 		 */

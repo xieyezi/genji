@@ -24,7 +24,7 @@ Language: 中文简体 | [EN](https://github.com/xieyezi/monia-cli)
 所以 `genji` 是快速的、敏捷的、准确的！
 
 ```
-npm install genji-es
+npm install genji-esm
 ```
 
 ### 创建一个Store
@@ -32,7 +32,7 @@ npm install genji-es
 你的 `Store` 是一个基于`compostion-api` 的 `hook`！您可以在其中添加任何内容：普通类型，对象，函数。 `set` 函数会将他们合并为一个 `Store`。
 
 ```ts
-import { create } from 'genji-es'
+import { create } from 'genji-esm'
 
 const useStore = create((set, get) => ({
   count: 0,
@@ -50,10 +50,17 @@ const useStore = create((set, get) => ({
   <button @click="increase">count++</button>
 </template>
 ....
-const { count, increase } = useStore(state => ({
+setup() {
+  const { count, increase } = useStore(state => ({
    count: state.count,
    increase: state.increase
-}))
+  }))
+
+  return {
+    count,
+    increase,
+  }
+}
 ```
 
 ### 从Store中取值

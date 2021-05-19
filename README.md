@@ -26,7 +26,7 @@ So genji is fast, agile and accurate!
 
 
 ```
-npm install genji-es
+npm install genji-esm
 ```
 
 ### Create Store
@@ -34,7 +34,7 @@ npm install genji-es
 Your store is a hook base on compostion-api! You can put anything in it: primitives, objects, functions. The set function merges state.
 
 ```ts
-import { create } from 'genji-es'
+import { create } from 'genji-esm'
 
 const useStore = create((set, get) => ({
   count: 0,
@@ -53,10 +53,17 @@ Use the hook in your components, Select your state and the component will re-ren
   <button @click="increase">count++</button>
 </template>
 ....
-const { count, increase } = useStore(state => ({
+setup() {
+  const { count, increase } = useStore(state => ({
    count: state.count,
    increase: state.increase
-}))
+  }))
+
+  return {
+    count,
+    increase,
+  }
+}
 ```
 
 ### Selecting multiple state slices

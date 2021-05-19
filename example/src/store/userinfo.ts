@@ -1,5 +1,4 @@
-import { create } from '../../../src/index'
-import { State } from '../../../src/create'
+import create, { State } from '../../../src/index'
 
 interface userState extends State {
 	count: number

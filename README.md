@@ -83,6 +83,12 @@ If you want pick it lick by Array,  like `react hooks`:
 const [count, genji] = useStore(state => [state.count, state.genji])
 ```
 
+Even you can pick it without args:
+```ts
+// uses the store with no args
+const { count, increase } = useStore()
+```
+
 All pick is so random and simple! It's all up to you.
 
 ### Fetching from multiple stores

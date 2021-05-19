@@ -22,11 +22,22 @@ export default defineComponent({
 		}
 	},
 	setup() {
+		/**
+		 * pick without args
+		 */
+		// const { count, increase } = useStore()
+        
+		/**
+		 * pick without Array
+		 */
 		const [userInfo, getUserInfo] = useStore(state => [
 			state.userInfo,
 			state.getUserInfo
 		])
 
+		/**
+		 * pick without Object
+		 */
 		const { count, increase } = useStore(state => ({
 			count: state.count,
 			increase: state.increase

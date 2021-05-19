@@ -21,7 +21,7 @@ So genji is fast, agile and accurate!
 
 
 ```
-npm install vue-genji
+npm install genji-es
 ```
 
 ### Create Store

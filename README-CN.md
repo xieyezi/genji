@@ -132,7 +132,6 @@ console.log(hero.value)
 
 ### 变更Store
 
-genji provide `set` function to update  `state`. just like this:
 `genji` 提供 `set` 函数来更新“状态”。就像这样：
 
 ```ts

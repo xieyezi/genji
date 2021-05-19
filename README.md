@@ -194,3 +194,5 @@ const useStore = create<State>(set => ({
 ```
 
 Hope you enjoy it!
+
+> api usage inspired by zustand, thanks a lot!

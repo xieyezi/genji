@@ -4,7 +4,7 @@
 </p>
 
 
-Language: EN | [中文简体](README-CN.md)
+Language: 中文简体 | [EN](https://github.com/xieyezi/monia-cli)
 
 
 <code>![visitors](https://visitor-badge.glitch.me/badge?page_id=xieyezi.genji)</code>
@@ -14,24 +14,22 @@ Language: EN | [中文简体](README-CN.md)
 
 
 
-genji is A small vue state management framewok by vue3 reactivity.
+`genji` 是一个轻巧的基于 `@vue-reactivity` 开发的状态管理框架.
 
-### Why calls genji ?
-It's inspired by Overwatch.
+### 为什么被称作 genji ?
+灵感来自于游戏`《守望先锋》` 的游戏角色：`源氏`。
 
-Genji flings precise and deadly Shuriken at his targets, and uses his technologically-advanced katana to deflect projectiles or deliver a Swift Strike that cuts down enemies.
+源氏可以用致命而准确的手里剑重创敌人，他的高科技武士刀可以用来反弹敌人的远程攻击，或是对敌人施展一次快速攻击。
 
-So genji is fast, agile and accurate!
-
-
+所以 `genji` 是快速的、敏捷的、准确的！
 
 ```
 npm install genji-es
 ```
 
-### Create Store
+### 创建一个Store
 
-Your store is a hook base on compostion-api! You can put anything in it: primitives, objects, functions. The set function merges state.
+你的 `Store` 是一个基于`compostion-api` 的 `hook`！您可以在其中添加任何内容：普通类型，对象，函数。 `set` 函数会将他们合并为一个 `Store`。
 
 ```ts
 import { create } from 'genji-es'
@@ -42,10 +40,9 @@ const useStore = create((set, get) => ({
   resetCount: () => set({ count: 0 })
 }))
 ```
-### Then use your vue components, and that's it!
+### 然后就可以在组件里面使用它了，就是如此简单!
 
-
-Use the hook in your components, Select your state and the component will re-render on changes.
+在你的组件中使用这个 `hook`，取出你想要的值，组件将在更新 `state` 之后重新渲染。
 
 ```ts
 <template>
@@ -59,19 +56,18 @@ const { count, increase } = useStore(state => ({
 }))
 ```
 
-### Selecting multiple state slices
+### 从Store中取值
 
-You can get state sliece in the way you like. 
+你可以按照自己喜欢的方式取出你想要的值。
 
-
-If you want to pick it out one by one:
+如果你想一个一个取出来:
 
 ```ts
 const count = useStore(state => state.count)
 const genji = useStore(state => state.genji)
 ```
 
-If you want pick it by Object, like `vuex mapState`:
+如果你想用对象的方式取值（类似`vuex mapState`）:
 
 ```ts
 // Object pick, re-renders the component when either state.count or state.genji change
@@ -81,24 +77,24 @@ const { count, genji } = useStore((state) => ({
 }))
 ```
 
-If you want pick it lick by Array,  like `react hooks`:
+如果你想用数组的方式取值（类似`react hooks`）:
 
 ```ts
 // Array pick, re-renders the component when either state.count or state.genji change
 const [count, genji] = useStore(state => [state.count, state.genji])
 ```
 
-Even you can pick it without args:
+甚至你还可以不带任何参数，直接取出来:
 ```ts
 // uses the store with no args
 const { count, increase } = useStore()
 ```
 
-All pick is so random and simple! It's all up to you.
+所有取值方式都是如此简单！这一切都取决于你怎么创建你的`选择器`。
 
-### Fetching from multiple stores
+### 从多个Store中取值
 
-Since you can create as many stores as you like, forwarding results to succeeding selectors is as natural as it gets.
+由于你可以创建任意数量的 `Store`，因此你可以随意组合各个`Store` 里面的值。
 
 ```ts
 import useUserStore from '../store/user'
@@ -109,9 +105,11 @@ const orders = useOrder(state => state.orders)
 
 ```
 
-### Memoizing selectors
-It is generally recommended to memoize selectors with `computed`. 
-> But you need to pay attention, the value pick from the state needs to be wrapped with `unref`, because the value of the state is proxied by the Proxy.
+### 带有计算属性的选择器
+
+在 `vue` 中，通常来说，一般都建议利用 `computed`来构造你的选择器。
+
+> 但是需要注意，此时从 `Store` 中选择的值需要用 `unref` 包装，因为状态的值由 `Proxy` 代理。
 
 
 ```ts
@@ -119,6 +117,8 @@ const countDouble = useStore(state =>computed(()=>unref( state.count) * 2))
 ```
 
 If a selector doesn't in components to reactivity, you can define it outside the components. But when you to use value of pick from the state, you need to be wrapped with `unref` too.
+
+如果`选择器`不在组件中使用，则也可以在组件外部定义它。但是，当使用来自 `Store` 的选择值时，也需要使用 `unref` 进行包裹，或者你也可以直接利用 `.value` 来使用它。
 
 ```ts
 const selector = state => state.hero
@@ -132,9 +132,10 @@ console.log(hero.value)
 
 ```
 
-### Overwriting state
+### 变更Store
 
 genji provide `set` function to update  `state`. just like this:
+`genji` 提供 `set` 函数来更新“状态”。就像这样：
 
 ```ts
 const useStore = create((set, get) => ({
@@ -147,9 +148,11 @@ const { count, increase } = useStore(state => ({
   increase: state.increase
 }))
 ```
-then you can use `increase` function  to change state.
+接着你就可以使用 `increase` 函数去改变 `count`。
 
 ### Async actions
+
+> 对于异步任务，建议使用 `async/await` 来处理。
 
 ```ts
 const useStore = create((set, get) => ({
@@ -160,9 +163,11 @@ const useStore = create((set, get) => ({
    }
 }))
 ```
-### Read from state in actions
+### 在 `action` 中读取 `Store`
 
 `set` allows fn-updates `set(state => result)`, but you still have access to state outside of it through `get`.
+
+在一个 `action` 执行过程中，如果你想取出 `Store` 的某些值，你可以通过 `get` 钩子来访问`Store`。
 
 ```ts
 const useStore = create((set, get) => ({
@@ -174,28 +179,28 @@ const useStore = create((set, get) => ({
 })
 ```
 
-### TypeScript
+### TypeScript支持
 
 ```ts
-// You can use `type`
+// 可以使用 `type`
 type State = {
   count: number
   increase: (by: number) => void
 }
 
-// Or `interface`
+// 或者 `interface`
 interface State {
   count: number
   increase: (by: number) => void
 }
 
-// And it is going to work for both
+// 然后所有的类型都会被正确推导
 const useStore = create<State>(set => ({
   count: 0,
   increase: (by) => set(state => ({ count: state.count + by })),
 }))
 ```
 
-Hope you enjoy it!
+喜欢你能喜欢`genji`~
 
 > api usage inspired by zustand, thanks a lot!

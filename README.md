@@ -5,8 +5,10 @@
 
 
 <code>![visitors](https://visitor-badge.glitch.me/badge?page_id=xieyezi.genji)</code>
-<code>![bundle-size](https://img.shields.io/badge/bundle--size-2k-blue)</code>
-<code>![npm-version](https://img.shields.io/badge/npm-v1.0.0-blue)</code>
+<code>![bundle size](https://img.shields.io/badge/bundle--size-2k-blue)</code>
+<code>![npm-version](https://img.shields.io/npm/v/genji-es)</code>
+<code>![coverage](https://img.shields.io/badge/coverage-100%25-blue)</code>
+
 
 
 genji is A small vue state management framewok by vue3 reactivity.

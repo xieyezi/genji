@@ -26,7 +26,7 @@ So genji is fast, agile and accurate!
 
 
 ```
-npm install genji-esm
+npm install genji-es
 ```
 
 ### Create Store
@@ -34,7 +34,7 @@ npm install genji-esm
 Your store is a hook base on compostion-api! You can put anything in it: primitives, objects, functions. The set function merges state.
 
 ```ts
-import { create } from 'genji-esm'
+import { create } from 'genji-es'
 
 const useStore = create((set, get) => ({
   count: 0,

@@ -24,7 +24,7 @@ Language: 中文简体 | [EN](https://github.com/xieyezi/genji)
 所以 `genji` 是快速的、敏捷的、准确的！
 
 ```
-npm install genji-esm
+npm install genji-es
 ```
 
 ### 创建一个Store
@@ -32,7 +32,7 @@ npm install genji-esm
 你的 `Store` 是一个基于`compostion-api` 的 `hook`！您可以在其中添加任何内容：普通类型，对象，函数。 `set` 函数会将他们合并为一个 `Store`。
 
 ```ts
-import { create } from 'genji-esm'
+import { create } from 'genji-es'
 
 const useStore = create((set, get) => ({
   count: 0,

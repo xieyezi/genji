@@ -1,5 +1,5 @@
 {
-  "name": "genji-esm",
+  "name": "genji-es",
   "version": "1.0.0",
   "description": "a vue state management framewok by vue3 reactivity",
   "main": "index.js",

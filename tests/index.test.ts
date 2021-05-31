@@ -7,6 +7,13 @@ type CounterState = {
 	increase: () => void
 }
 
+type OhterCountState = {
+	count: number
+	otherCount: number
+	increase: () => void
+	changeCountAndOtherCount: () => void
+}
+
 type UserState = {
 	name: string
 	changeName: () => Promise<void>
@@ -75,6 +82,7 @@ it('use the store with one by one selector', () => {
 it('use the store to memoizing selector', () => {
 	const useStore = create<CounterState>(set => ({
 		count: 0,
+		otherCount: 0,
 		increase: () => set(state => ({ count: state.count + 1 }))
 	}))
 
@@ -107,18 +115,31 @@ it('change the store by function', () => {
 })
 
 it('change the store by object', () => {
-	const useStore = create<CounterState>(set => ({
+	const useStore = create<OhterCountState>(set => ({
 		count: 0,
-		increase: () => set({ count: 1 })
+		otherCount: 1,
+		increase: () => set({ count: 1 }),
+		changeCountAndOtherCount: () =>
+			set({
+				count: 5,
+				otherCount: 6
+			})
 	}))
 
 	const count = useStore(state => state.count)
-	const increase = useStore(state => state.increase)
+	const otherCount = useStore(state => state.otherCount)
+	const changeCountAndOtherCount = useStore(
+		state => state.changeCountAndOtherCount
+	)
 
 	expect(count.value).toBe(0)
-	expect(increase).toBeInstanceOf(Function)
-	increase()
-	expect(count.value).toBe(1)
+	expect(otherCount.value).toBe(1)
+	expect(changeCountAndOtherCount).toBeInstanceOf(Function)
+
+	changeCountAndOtherCount()
+
+	expect(count.value).toBe(5)
+	expect(otherCount.value).toBe(6)
 })
 
 it('change the store by async function', async () => {

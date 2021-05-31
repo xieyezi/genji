@@ -3,13 +3,17 @@
 	<p>count is: {{ count }}</p>
 	<p>name is: {{ userInfo.name }}</p>
 	<p>age is: {{ userInfo.age }}</p>
+	<p>hero is: {{hero}}}</p>
 	<div>
 		<button @click="increase">++</button>
+	</div>
+	<div style="padding-top: 10px;">
+		<button @click="changeCountAndHero">changeCountAndHero</button>
 	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent } from 'vue'
 import useStore from '../store/userinfo'
 
 export default defineComponent({
@@ -21,16 +25,20 @@ export default defineComponent({
 		}
 	},
 	setup() {
-		const [count, userInfo, increase] = useStore(state => [
+		const [count, userInfo,hero, increase,changeCountAndHero ] = useStore(state => [
 			state.count,
 			state.userInfo,
-			state.increase
+			state.hero,
+			state.increase,
+			state.changeCountAndHero
 		])
 
 		return {
 			count,
+			hero,
+			userInfo,
 			increase,
-			userInfo
+			changeCountAndHero
 		}
 	}
 })

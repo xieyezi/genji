@@ -1,46 +1,52 @@
 import create, { State } from '../../../src/index'
 
+export interface UserInfo {
+	name: string
+	age: string
+	company: {
+		id: string
+		name: string
+		address: string
+	}
+}
+
+export interface Hero {
+	name: string
+	skill: string
+	type: string
+}
+
 interface userState extends State {
 	count: number
-	userInfo: object
-	hero: object
+	userInfo: UserInfo
+	hero: Object
 	increase: () => void
+	changeCountAndHero: () => void
 	getUserInfo: () => Promise<void>
-	setUserInfo: (newInfo: object) => void
-	submit: () => Promise<void>
 }
 const useStore = create<userState>((set, get) => ({
 	count: 0,
-	userInfo: {},
+	userInfo: {} as UserInfo,
 	hero: {
 		name: 'genji',
-		age: '13',
-		sex: 'rabot'
+		type: 'attack,',
+		skill: 'Shuriken'
 	},
 	increase: () => set(state => ({ count: state.count + 1 })),
 	getUserInfo: async () => {
 		const res = await fetch('http://xieyezi.com:9003/mock/19/daily/genji')
 		const json = await res.json()
-		// const { setUserInfo } = get()
-		// setUserInfo(json)
 		set({ userInfo: json })
 	},
-	setUserInfo: (newInfo: object) => {
-		set({ userInfo: newInfo })
-	},
-
-	submit: async () => {
-		await fetch('xxxxxx', {
-			method: 'POST',
-			credentials: 'include',
-			body: JSON.stringify({
-				name: 'string',
-				age: 'number',
-				sex: 'string'
-			})
+	changeCountAndHero: () =>
+		set({
+			count: 20,
+			hero: {
+				name: 'tracer',
+				type: 'attack',
+				skill: 'gun'
+			}
 		})
-		get().getUserInfo()
-	}
 }))
 
 export default useStore

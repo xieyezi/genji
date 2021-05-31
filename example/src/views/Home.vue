@@ -1,7 +1,7 @@
 <template>
 	<h1>{{ msg }}</h1>
 	<p>count is: {{ count }}</p>
-	<p>count is: {{ countDouble }}</p>
+	<p>count double is: {{ countDouble }}</p>
 	<p>name is: {{ userInfo.name }}</p>
 	<div>
 		<button @click="increase">count++</button>

@@ -3,7 +3,7 @@
 	<img alt="Genji logo" width="210" height="210" src="./assets/genji.png" />
 	<div id="nav">
 		<router-link to="/">Home Page</router-link>
-		<span>|</span>
+		<span style="padding-left: 10px;padding-right: 10px;">|</span>
 		<router-link to="/user">User Page</router-link>
 	</div>
 	<router-view />

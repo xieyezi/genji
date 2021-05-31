@@ -1,9 +1,8 @@
 <template>
-	<h1>{{ msg }}</h1>
 	<p>count is: {{ count }}</p>
 	<p>name is: {{ userInfo.name }}</p>
 	<p>age is: {{ userInfo.age }}</p>
-	<p>hero is: {{hero}}}</p>
+	<p>hero is: {{ hero }}}</p>
 	<div>
 		<button @click="increase">++</button>
 	</div>
@@ -18,14 +17,14 @@ import useStore from '../store/userinfo'
 
 export default defineComponent({
 	name: 'User',
-	props: {
-		msg: {
-			type: String,
-			required: true
-		}
-	},
 	setup() {
-		const [count, userInfo,hero, increase,changeCountAndHero ] = useStore(state => [
+		const [
+			count,
+			userInfo,
+			hero,
+			increase,
+			changeCountAndHero
+		] = useStore(state => [
 			state.count,
 			state.userInfo,
 			state.hero,

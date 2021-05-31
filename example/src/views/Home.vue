@@ -1,5 +1,4 @@
 <template>
-	<h1>{{ msg }}</h1>
 	<p>count is: {{ count }}</p>
 	<p>count double is: {{ countDouble }}</p>
 	<p>name is: {{ userInfo.name }}</p>
@@ -15,12 +14,6 @@ import useStore from '../store/userinfo'
 
 export default defineComponent({
 	name: 'Home',
-	props: {
-		msg: {
-			type: String,
-			required: true
-		}
-	},
 	setup() {
 		/**
 		 * pick without args

@@ -38,9 +38,16 @@ export default function create<TState extends State>(
 		const nextState = useCheckFn(partial)
 			? (partial as (state: TState) => TState)(stateWithOutReactive)
 			: partial
-		const targetKey = Object.keys(nextState)[0]
-		if (Object.keys(state).includes(targetKey))
-			state[targetKey].value = nextState[Object.keys(nextState)[0]]
+
+		const prevStateKeys = Object.keys(state)
+
+		Object.keys(nextState).forEach(e => {
+			if (prevStateKeys.includes(e)) state[e].value = nextState[e]
+			else
+				throw console.warn(
+					`${e} is not included in the Store, please check if the key is correct.`
+				)
+		})
 	}
 
 	const getState: GetState<TState> = () => state

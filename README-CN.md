@@ -14,7 +14,7 @@ Language: 中文简体 | [EN](https://github.com/xieyezi/genji)
 
 
 
-`genji` 是一个轻巧的基于 `@vue-reactivity` 开发的状态管理框架.
+`genji` 是一个轻巧的基于 `@vue-reactivity` 开发的 `vue3` 状态管理框架.
 
 ### 为什么被称作 genji ?
 灵感来自于游戏`《守望先锋》` 的游戏角色：`源氏`。

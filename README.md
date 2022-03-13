@@ -42,7 +42,7 @@ const useStore = create((set, get) => ({
   resetCount: () => set({ count: 0 })
 }))
 ```
-### Then use your vue components, and that's it!
+### Then use it in your vue components, and that's it!
 
 
 Use the hook in your components, Select your state and the component will re-render on changes.

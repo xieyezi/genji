@@ -27,6 +27,7 @@ So genji is fast, agile and accurate!
 
 ```
 npm install genji-es
+yarn add genji-es
 ```
 
 ### Create Store

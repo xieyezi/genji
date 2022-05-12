@@ -9,7 +9,7 @@ Language: EN | [中文简体](README-CN.md)
 
 <code>![visitors](https://visitor-badge.glitch.me/badge?page_id=xieyezi.genji)</code>
 <code>![bundle size](https://img.shields.io/badge/bundle--size-2k-blue)</code>
-<code>![npm-version](https://img.shields.io/npm/v/genji-es)</code>
+<code>![npm-version](https://img.shields.io/npm/v/@xieyezi/genji)</code>
 <code>![coverage](https://img.shields.io/badge/coverage-100%25-blue)</code>
 
 
@@ -26,8 +26,8 @@ So genji is fast, agile and accurate!
 
 
 ```
-npm install genji-es
-yarn add genji-es
+pnpm install @xieyezi/genji
+yarn add @xieyezi/genji
 ```
 
 ### Create Store
@@ -35,7 +35,7 @@ yarn add genji-es
 Your store is a hook base on compostion-api! You can put anything in it: primitives, objects, functions. The set function merges state.
 
 ```ts
-import { create } from 'genji-es'
+import { create } from '@xieyezi/genji'
 
 const useStore = create((set, get) => ({
   count: 0,

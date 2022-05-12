@@ -9,7 +9,7 @@ Language: 中文简体 | [EN](https://github.com/xieyezi/genji)
 
 <code>![visitors](https://visitor-badge.glitch.me/badge?page_id=xieyezi.genji)</code>
 <code>![bundle size](https://img.shields.io/badge/bundle--size-2k-blue)</code>
-<code>![npm-version](https://img.shields.io/npm/v/genji-es)</code>
+<code>![npm-version](https://img.shields.io/npm/v/@xieyezi/genji)</code>
 <code>![coverage](https://img.shields.io/badge/coverage-100%25-blue)</code>
 
 
@@ -24,7 +24,7 @@ Language: 中文简体 | [EN](https://github.com/xieyezi/genji)
 所以 `genji` 是快速的、敏捷的、准确的！
 
 ```
-npm install genji-es
+pnpm install @xieyezi/genji
 ```
 
 ### 创建一个Store
@@ -32,7 +32,7 @@ npm install genji-es
 你的 `Store` 是一个基于`compostion-api` 的 `hook`！您可以在其中添加任何内容：普通类型，对象，函数。 `set` 函数会将他们合并为一个 `Store`。
 
 ```ts
-import { create } from 'genji-es'
+import { create } from '@xieyezi/genji'
 
 const useStore = create((set, get) => ({
   count: 0,

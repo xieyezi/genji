@@ -87,5 +87,8 @@
       "npm run lint",
       "git add"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
